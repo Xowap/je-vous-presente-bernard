@@ -32,6 +32,10 @@
         .dimmed {
             color: grey;
         }
+
+        .mt50 {
+            margin-top: 50px !important;
+        }
     </style>
 </head>
 <body>
@@ -836,6 +840,76 @@
             </section>
 
             <!-- 12 minutes -->
+        </section>
+
+        <section>
+            <section>
+                <h1>number_bot</h1>
+                <h4>«&nbsp;Devine un nombre entre 1 et 100...&nbsp;»</h4>
+            </section>
+
+            <section>
+                <h2>Créer le projet</h2>
+
+<pre class="mt50"><code data-trim data-noescape>
+bernard start_project number_bot number_bot
+</code></pre>
+            </section>
+
+            <section>
+                <h2>Faire le flow</h2>
+
+                <img data-src="img/number-bot.svg">
+            </section>
+
+            <section>
+                <h2>Créer les états</h2>
+
+<pre class="mt50"><code data-trim data-noescape>
+class S001xWelcome(NumberBotState):
+    @page_view('/bot/welcome')
+    async def handle(self) -> None:
+        name = await self.request.user.get_friendly_name()
+
+        self.send(
+            lyr.Text(t('WELCOME', name=name)),
+            fbl.QuickRepliesList([
+                fbl.QuickRepliesList.TextOption(
+                    slug='play',
+                    text=t.LETS_PLAY,
+                    intent=its.LETS_PLAY,
+                ),
+            ]),
+        )
+</code></pre>
+            </section>
+
+            <section>
+                <h2>Configurer les transitions</h2>
+
+<pre class="mt50"><code data-trim data-noescape>
+transitions = [
+    Tr(
+        dest=S001xWelcome,
+        factory=trg.Action.builder('get_started'),
+    ),
+    Tr(
+        dest=S002xGuessANumber,
+        origin=S001xWelcome,
+        factory=trg.Choice.builder('play'),
+    ),
+]
+</code></pre>
+            </section>
+        </section>
+
+        <section>
+            <h4>Aller plus loin...</h4>
+            <h3>
+                <a href="https://github.com/BernardFW/bernard">https://github.com/BernardFW/bernard</a>
+            </h3>
+
+            <h1 class="fragment">Questions&nbsp;?</h1>
         </section>
     </div>
 </div>
