@@ -50,59 +50,27 @@
         </section>
         <section>
             <section>
-                <h1>Petite histoire du <i>web</i></h1>
-            </section>
-            <section>
-                <h2>4 décembre 1995</h2>
-                <h1 class="fragment fade-up">Naissance de JavaScript</h1>
-                <h4 class="fragment fade-up">
-                    Langage event-driven, peut faire des requêtes au serveur et
-                    modifier le DOM
-                </h4>
-            </section>
-            <section
-                    class="light-text"
-                    data-state="snow-fall"
-                    data-background-color="#244587"
-                    data-background-transition="zoom"
-            >
-                <h2>Mais c'est super&nbsp;!</h2>
-                <h1 class="fragment fade-down">
-                    Faisons tomber de la neige avec&nbsp;!
-                </h1>
-            </section>
-            <section>
-                <h4><strong>A+9</strong> (1er avril 2004) &mdash;
-                    <strong>Gmail</strong></h4>
-                <h4 class="fragment"><strong>A+10</strong> (18 février 2005)
-                    &mdash; <strong>Ajax</strong></h4>
-                <h4 class="fragment"><strong>A+15</strong> (20 octobre 2010)
-                    &mdash; <strong>Angular</strong></h4>
-                <h4 class="fragment"><strong>A+23</strong> (aujourd'hui)
-                    &mdash; <strong>Cours toujours</strong></h4>
-                <h1 class="fragment fade-up">23 fucking years</h1>
+                <h2>Petite histoire du <i>web</i></h2>
+                <h4><strong>A+0</strong> (1990) &mdash; <strong>First browser</strong></h4>
+                <h4 class="fragment"><strong>A+1</strong> (1991) &mdash; ... <strong>released</strong></h4>
+                <h4 class="fragment"><strong>A+15</strong> (2005) &mdash; <strong>Django</strong></h4>
+                <h4 class="fragment"><strong>A+24</strong> (2014) &mdash; <strong>Migrations</strong></h4>
+                <h2 class="fragment fade-up">24 fucking years</h2>
             </section>
         </section>
         <section>
             <section>
-                <h2>Ouvrez les APIs&nbsp;!</h2>
+                <h2>Ouverture des plateformes</h2>
 
                 <ul>
-                    <li class="fragment">WeChat, Messenger, Telegram, Line, VK,
-                        etc
-                    </li>
-                    <li class="fragment">Grosse médiatisation</li>
-                    <li class="fragment">Avènement de l'<em>AI</em>
-                        <small class="fragment">(lol)</small>
-                    </li>
+                    <li>Facebook, WeChat, Line, Telegram ...</li>
+                    <li class="fragment">Qu'est-ce qu'on fait mal&nbsp;?</li>
                 </ul>
-            </section>
-            <section>
-                <h2>Quelle est la neige des messageries&nbsp;?</h2>
+
 
                 <img
-                        class="fragment"
-                        data-src="img/clippy.svg"
+                    class="fragment"
+                    data-src="img/clippy.svg"
                 >
             </section>
             <section>
@@ -865,23 +833,23 @@ bernard start_project number_bot number_bot
             <section>
                 <h2>Créer les états</h2>
 
-<pre class="mt50"><code data-trim data-noescape>
-class S001xWelcome(NumberBotState):
-    @page_view('/bot/welcome')
-    async def handle(self) -> None:
-        name = await self.request.user.get_friendly_name()
+<pre style="box-shadow: none;" class="mt50">
+class <span class="fragment highlight-current-red" data-fragment-index="2">S001xWelcome</span>(<span class="fragment highlight-current-red" data-fragment-index="1">NumberBotState</span>):
+    <span class="fragment highlight-current-red" data-fragment-index="3">@page_view('/bot/welcome')</span>
+    async def <span class="fragment highlight-current-red" data-fragment-index="4">handle(self)</span> -> None:
+    <span class="fragment highlight-current-red" data-fragment-index="7">name</span> = <span class="fragment highlight-current-red" data-fragment-index="8">await</span> <span class="fragment highlight-current-red" data-fragment-index="9">self.request</span>.user.<span class="fragment highlight-current-red" data-fragment-index="8">get_friendly_name()</span>
 
-        self.send(
-            lyr.Text(t('WELCOME', name=name)),
-            fbl.QuickRepliesList([
-                fbl.QuickRepliesList.TextOption(
-                    slug='play',
-                    text=t.LETS_PLAY,
-                    intent=its.LETS_PLAY,
-                ),
-            ]),
-        )
-</code></pre>
+    <span class="fragment highlight-current-red" data-fragment-index="10">self.send(
+        <span class="fragment highlight-current-red" data-fragment-index="11">lyr.Text(<span class="fragment highlight-current-red" data-fragment-index="6">t('WELCOME', name=name)</span>)</span>,
+        <span class="fragment highlight-current-red" data-fragment-index="12">fbl.QuickRepliesList([
+            <span class="fragment highlight-current-red" data-fragment-index="13">fbl.QuickRepliesList.TextOption(
+                <span class="fragment highlight-current-red" data-fragment-index="18">slug='play'</span>,
+                <span class="fragment highlight-current-red" data-fragment-index="17">text=<span class="fragment highlight-current-red" data-fragment-index="5">t.LETS_PLAY</span></span>,
+                <span class="fragment highlight-current-red" data-fragment-index="15">intent=<span class="fragment highlight-current-red" data-fragment-index="16">its.LETS_PLAY</span></span>,
+            )</span>,
+        ])</span>,
+    )</span>
+</pre>
             </section>
 
             <section>
